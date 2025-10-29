@@ -1,0 +1,20 @@
+[project]
+name = "MomentoAI"
+version = "0.1.0"
+description = "Python SDK client for ImageLens Cloud Run image-search service"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+{ name = "Manil Modi" }
+]
+license = { text = "MIT" }
+
+
+[project.dependencies]
+httpx = "^0.24"
+python-dotenv = "^1.0"
+
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"

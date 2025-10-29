@@ -1,0 +1,5 @@
+HEALTH = "/healthz"
+SEARCH = "/search"
+VECTORIZE = "/vectorize"
+FIND_FACE = "/find-face"
+EVENT_IMAGES = "/event-images"
