@@ -1,20 +1,22 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "MomentoAI"
+name = "momentoai"
 version = "0.1.0"
-description = "Python SDK client for ImageLens Cloud Run image-search service"
+description = "Python SDK for Momento AI — image vectorization, face search, and CLIP embeddings with user-supplied Supabase credentials."
 readme = "README.md"
-requires-python = ">=3.9"
 authors = [
-{ name = "Manil Modi" }
+  { name = "Manil Modi", email = "msmodi1701@gmail.com" }
 ]
 license = { text = "MIT" }
+requires-python = ">=3.8"
+dependencies = [
+  "httpx>=0.24.1",
+  "typing-extensions",
+]
 
-
-[project.dependencies]
-httpx = "^0.24"
-python-dotenv = "^1.0"
-
-
-[build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+[project.urls]
+Homepage = "https://github.com/ManilModi/MomentoAI-SDK"
+Documentation = "https://github.com/ManilModi/MomentoAI-SDK#readme"
