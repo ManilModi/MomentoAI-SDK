@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "momentoai"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python SDK for Momento AI — image vectorization, face search, and CLIP embeddings with user-supplied Supabase credentials."
 readme = "README.md"
 authors = [
