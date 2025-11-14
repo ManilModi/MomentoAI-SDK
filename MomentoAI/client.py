@@ -75,17 +75,22 @@ class MomentoAIClient:
         """Finds faces within the image using user's Supabase."""
         return self._post_file(ep.FIND_FACE, file_path, {"event_id": event_id, "business_id": business_id})
 
-    def search_face(self, file_path: str, event_id: str, business_id: str, top_k: int = 5) -> Dict[str, Any]:
-        """Searches similar faces in user's Supabase embeddings."""
-        return self._post_file(
-            ep.SEARCH_FACE,
-            file_path,
-            {
-                "event_id": event_id,
-                "business_id": business_id,
-                "top_k": str(top_k),
-            },
-        )
+    def search_face(self, prompt: str, event_id: str, business_id: str, top_k: int = 5) -> Dict[str, Any]:
+        """Searches for similar images using a text prompt and user's Supabase embeddings."""
+        
+        params = {
+            "prompt": prompt,
+            "event_ids": [event_id],
+            "business_id": business_id,
+            "top_k": top_k,
+            "supabase_url": self.supabase_url,
+            "supabase_service_key": self.supabase_service_key,
+            "supabase_bucket": self.supabase_bucket,
+        }
+
+        response = self._client.get(ep.SEARCH_FACE, params=params)
+        return handle_response(response)
+
 
     def list_embeddings(self, event_id: str, business_id: str) -> Dict[str, Any]:
         """Lists all embeddings for a specific event/business."""

@@ -81,12 +81,22 @@ class AsyncMomentoAIClient:
             "business_id": business_id
         })
 
-    async def search_face(self, file_path: str, event_id: str, business_id: str, top_k: int = 5) -> Dict[str, Any]:
-        return await self._post_file(ep.SEARCH_FACE, file_path, {
-            "event_id": event_id,
+    async def search_face(self, prompt: str, event_id: str, business_id: str, top_k: int = 5) -> Dict[str, Any]:
+        """Asynchronously searches for similar images using a text prompt and user's Supabase credentials."""
+        
+        params = {
+            "prompt": prompt,
+            "event_ids": [event_id],
             "business_id": business_id,
-            "top_k": str(top_k)
-        })
+            "top_k": top_k,
+            "supabase_url": self.supabase_url,
+            "supabase_service_key": self.supabase_service_key,
+            "supabase_bucket": self.supabase_bucket,
+        }
+
+        response = await self._client.get(ep.SEARCH_FACE, params=params)
+        return handle_response(response)
+
 
     async def list_embeddings(self, event_id: str, business_id: str) -> Dict[str, Any]:
         self._validate_supabase()
